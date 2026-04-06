@@ -60,27 +60,27 @@ services:
       - redis
       - kafka
 
-  etcd:
-    image: quay.io/coreos/etcd:v3.5.9
-    container_name: etcd
-    environment:
-      ETCD_NAME: etcd
-      ETCD_DATA_DIR: /etcd-data
-      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
-      ETCD_ADVERTISE_CLIENT_URLS: http://etcd:2379
-    ports:
-      - "2379:2379"
+  # etcd:
+  #   image: quay.io/coreos/etcd:v3.5.9
+  #   container_name: etcd
+  #   environment:
+  #     ETCD_NAME: etcd
+  #     ETCD_DATA_DIR: /etcd-data
+  #     ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+  #     ETCD_ADVERTISE_CLIENT_URLS: http://etcd:2379
+  #   ports:
+  #     - "2379:2379"
 
-  apisix:
-    image: apache/apisix:latest
-    container_name: apisix
-    depends_on:
-      - etcd
-    ports:
-      - "9080:9080"
-      - "9180:9180"
-    volumes:
-      - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml
+  # apisix:
+  #   image: apache/apisix:latest
+  #   container_name: apisix
+  #   depends_on:
+  #     - etcd
+  #   ports:
+  #     - "9080:9080"
+  #     - "9180:9180"
+  #   volumes:
+  #     - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml
 
 volumes:
   postgres_data:
